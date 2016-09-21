@@ -6,7 +6,9 @@ namespace Transprt {
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles) {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/jquery-3.1.0.min.js", "~/Scripts/jquery.scrollex.min.js", "~/Scripts/jquery.scrolly.min.js"
+                        , "~/Scripts/skel.min.js", "~/Scripts/util.js", "~/Scripts/main.js"
+                        ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));

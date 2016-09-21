@@ -1,9 +1,9 @@
 ﻿namespace Transprt.Data {
     using System.Data.Entity;
-
+    using Utils;
     public partial class TransportEntity : DbContext {
         public TransportEntity()
-            : base("name=TransprtEntities") {
+            : base(UtilAut.GetConnectionString()) {
         }
         #region Tables
         public virtual DbSet<Area> Areas { get; set; }
