@@ -177,10 +177,12 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Data\Area.cs" />
     <Compile Include="Data\AsignacionRuta.cs" />
     <Compile Include="Data\Chofere.cs" />
+    <Compile Include="Data\Claim.cs" />
     <Compile Include="Data\Cliente.cs" />
     <Compile Include="Data\Direccione.cs" />
     <Compile Include="Data\Estado.cs" />
@@ -189,6 +191,8 @@
     <Compile Include="Data\Identity\IdentityConfiguration.cs" />
     <Compile Include="Data\Identity\IdentityDBContext.cs" />
     <Compile Include="Data\Marca.cs" />
+    <Compile Include="Data\Menu.cs" />
+    <Compile Include="Data\MenuByRole.cs" />
     <Compile Include="Data\TransportEntity.cs" />
     <Compile Include="Data\Modelo.cs" />
     <Compile Include="Data\Pais.cs" />
@@ -197,10 +201,13 @@
     <Compile Include="Data\Ruta.cs" />
     <Compile Include="Data\TipoTransporte.cs" />
     <Compile Include="Data\Transporte.cs" />
+    <Compile Include="Data\TransprtConfiguration.cs" />
     <Compile Include="Data\Usuario.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Managers\Base\BaseManager.cs" />
+    <Compile Include="Managers\MenuManager.cs" />
     <Compile Include="Migrations\201609210229492_InitialCreate.cs" />
     <Compile Include="Migrations\201609210229492_InitialCreate.Designer.cs">
       <DependentUpon>201609210229492_InitialCreate.cs</DependentUpon>
@@ -227,6 +234,8 @@
     <Content Include="images\pic01.jpg" />
     <Content Include="images\pic02.jpg" />
     <Content Include="images\pic03.jpg" />
+    <Content Include="images\transprt_logo256x256.png" />
+    <Content Include="images\transprt_logo32x32.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\fontawesome-webfont.eot" />
@@ -277,14 +286,16 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Menu.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Shared\_LayoutContent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\images\" />
+    <Folder Include="images\favicons\" />
     <Folder Include="Models\" />
     <Folder Include="Scripts\ie\" />
   </ItemGroup>

@@ -6,5 +6,9 @@ namespace Transprt.UtilAutUtils {
             return ConfigurationManager.AppSettings[setting]
                 ?? stringDefault;
         }
+
+        public static string GetPageName(string name) {
+            return "Transprt | " + name;
+        }
     }
 }

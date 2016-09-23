@@ -4,6 +4,7 @@
     public partial class TransportEntity : DbContext {
         public TransportEntity()
             : base(UtilAut.GetConnectionString()) {
+            
         }
         #region Tables
         public virtual DbSet<Area> Areas { get; set; }
@@ -14,6 +15,8 @@
         public virtual DbSet<Estado> Estados { get; set; }
         public virtual DbSet<Marca> Marcas { get; set; }
         public virtual DbSet<Modelo> Modelos { get; set; }
+        public virtual DbSet<Menu> Menus { get; set; }
+        public virtual DbSet<MenuByRole> MenuByRoles { get; set; }
         public virtual DbSet<Pais> Paises { get; set; }
         public virtual DbSet<Pedido> Pedidos { get; set; }
         public virtual DbSet<Persona> Personas { get; set; }
@@ -508,6 +511,28 @@
                 .HasMany(e => e.Transportes1)
                 .WithOptional(e => e.Usuario1)
                 .HasForeignKey(e => e.usr_modif);
+
+            modelBuilder.Entity<Menu>()
+              .Property(e => e.name)
+              .IsUnicode(false);
+
+            modelBuilder.Entity<Menu>()
+                .Property(e => e.url)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Menu>()
+                .Property(e => e.usr_crea)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Menu>()
+                .Property(e => e.usr_modif)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Menu>()
+                .HasMany(e => e.MenuByRoles)
+                .WithRequired(e => e.Menu)
+                .HasForeignKey(e => e.id_menu)
+                .WillCascadeOnDelete(false);
         }
     }
 }

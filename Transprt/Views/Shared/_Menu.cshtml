@@ -1,20 +1,24 @@
-﻿<!-- Header -->
-<header id="header" class="alt">
-    <h1><a href="index.html">Spectral</a></h1>
-    <nav id="nav">
-        <ul>
-            <li class="special">
-                <a href="#menu" class="menuToggle"><span>Menu</span></a>
-                <div id="menu">
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="generic.html">Generic</a></li>
-                        <li><a href="elements.html">Elements</a></li>
-                        <li><a href="#">Sign Up</a></li>
-                        <li><a href="#">Log In</a></li>
-                    </ul>
-                </div>
-            </li>
-        </ul>
-    </nav>
+﻿@model IEnumerable<Transprt.Data.Menu>
+@{
+    var isHome = ViewData["isHome"] as string;
+}
+<!-- Header -->
+<header id="header" class="@(string.IsNullOrWhiteSpace(isHome) ? string.Empty : "alt")">
+    <h1><a href="/"><img src="~/images/transprt_logo32x32.png" style="vertical-align:middle" /> Transprt</a></h1>
+    @if (Model != null && Model.Count() > 0) {
+        <nav id="nav">
+            <ul>
+                <li class="special">
+                    <a href="#menu" class="menuToggle"><span>Menu</span></a>
+                    <div id="menu">
+                        <ul>
+                            @foreach (var menu in Model) {
+                                <li><a href="@menu.url" class="more scrolly">@menu.name</a></li>
+                            }
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    }
 </header>

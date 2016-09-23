@@ -1,0 +1,18 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<article id="main">
+    <header>
+        <h2>@ViewBag.Header</h2>
+        @if (!string.IsNullOrWhiteSpace(ViewBag.SubTitle)) {
+            <p>@ViewBag.SubTitle</p>
+        }
+    </header>
+    <section class="wrapper style5">
+        <div class="inner">
+            @RenderBody()
+        </div>
+    </section>
+</article>

@@ -66,6 +66,10 @@ namespace Transprt.Data
         [Column(TypeName = "date")]
         public DateTime? fec_modif { get; set; }
 
+        [Required]
+        [StringLength(128)]
+        public string id_usr_auth { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Area> Areas { get; set; }
 
