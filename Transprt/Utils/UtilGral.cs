@@ -2,6 +2,7 @@
 
 namespace Transprt.UtilAutUtils {
     public class UtilGral {
+        public const string ERROR_FROM_CONTROLLER = "modelErrorCustomized";
         public static string GetConfiguration(string setting, string stringDefault) {
             return ConfigurationManager.AppSettings[setting]
                 ?? stringDefault;

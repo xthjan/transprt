@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -26,6 +27,17 @@ namespace Transprt.Data.Identity {
 
         [Required]
         public string CreationUserName { get; set; }
+
+        [NotMapped]
+        public bool RememberMe { get; set; }
+
+        [Required(ErrorMessage ="El usuario es requerido")]
+        [NotMapped]
+        public string Password { get; set; }
+
+        [Required(ErrorMessage = "La Contraseña es requerida")]
+        [NotMapped]
+        public string User { get; set; }
 
         public DateTime? ModificationDate { get; set; }
 

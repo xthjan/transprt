@@ -1,9 +1,48 @@
 ﻿@using Transprt.Data.Identity;
-@model AppRole
+@model AppUser
 @{
     ViewBag.Title = "Login";
     Layout = "~/Views/Shared/_LayoutContent.cshtml";
     ViewBag.Header = "Login";
     ViewBag.SubTitle = "Ingresa a Transprt con tus datos de usuario";
+    ViewBag.IsValidable = true;
+    var listMessages = new List<MvcHtmlString> { Html.ValidationMessageFor(model => model.User)
+                                                , Html.ValidationMessageFor(model => model.Password)};
+    ViewBag.MessageValidator = "Ha ocurrido un error en su acceso.";
+    ViewBag.HideMenu = true;
 }
+@using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal" })) {
+    Html.RenderPartial("/Views/Partials/_ValidationMessage.cshtml", listMessages);
+    <div class="form-group">
+        <div class="col-sm-12">
+            <div class="input-group">
+                <span class="input-group-addon" id="descriptor">usuario</span>
+                @Html.TextBoxFor(model => model.User, new { @type = "text", @class = "form-control", aria_describedby = "descriptor" })
+            </div>
+        </div>
+    </div>
+        <div class="form-group">
+            <div class="col-sm-12">
+                <div class="input-group">
+                    <span class="input-group-addon" id="contdescript">contraseña</span>
+                    @Html.TextBoxFor(model => model.Password, new { @type = "password", @class = "form-control", aria_describedby = "contdescript" })
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-12">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        @Html.CheckBoxFor(model => model.RememberMe)
+                    </span>
+                    <input type="text" class="form-control" aria-label="..." value="Recordarme" disabled="disabled">
+                </div>
+            </div>
+        </div>
 
+        <div class="form-group">
+            <div class="col-sm-12">
+                <input type="submit" class="btn btn-default" value="Acceso" />
+            </div>
+        </div>
+}

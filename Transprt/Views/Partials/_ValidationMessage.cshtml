@@ -1,0 +1,23 @@
+﻿@using Transprt.UtilAutUtils
+@model List<MvcHtmlString>
+@{
+    var errors = (from item in ViewData.ModelState
+                  where item.Value.Errors.Any() && item.Key == UtilGral.ERROR_FROM_CONTROLLER
+                  select item.Value);
+}
+@if (!ViewData.ModelState.IsValid) {
+    <div class="alert alert-danger" role="alert">
+        <strong>@ViewBag.MessageValidator</strong>
+        @foreach (MvcHtmlString message in Model) {
+            <div>@message</div>
+        }
+
+        @foreach (ModelState state in errors) {
+            foreach (ModelError error in state.Errors) {
+                    <div>@error.ErrorMessage</div>
+            }
+        }
+
+
+    </div>
+}

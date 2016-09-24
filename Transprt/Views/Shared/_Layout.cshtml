@@ -1,8 +1,8 @@
 ﻿@using Transprt.UtilAutUtils
 @{
-    var menuModel = (IEnumerable<Transprt.Data.Menu>)ViewBag.MenuList;
     var isHome = ViewBag.OnHomeClass;
     var pageTitle = UtilGral.GetPageName(ViewBag.Title);
+    var IsValidable = ViewBag.IsValidable != null;
 }
 <!DOCTYPE html>
 <html>
@@ -28,7 +28,7 @@
 <body class="@(string.IsNullOrWhiteSpace(isHome)?string.Empty : isHome)">
     <div id="page-wrapper">
 
-        @Html.Partial("_Menu", menuModel, new ViewDataDictionary() { { "isHome", isHome } })
+        @Html.Partial("_Menu")
         @if (!(string.IsNullOrWhiteSpace(isHome))) {
         <!-- Banner -->
             <section id="banner">
@@ -52,6 +52,7 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-    <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+    <!--[if lte IE 8]><script src="/scripts/ie/respond.min.js"></script><![endif]-->
+    @if (IsValidable) { Scripts.Render("~/bundles/jqueryval"); }
 </body>
 </html>

@@ -4,6 +4,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.AspNet.Identity.Owin;
 using Owin;
 using Transprt.Data.Identity;
+using System;
 
 [assembly: OwinStartup(typeof(Transprt.Security.Startup))]
 namespace Transprt.Security {
@@ -13,7 +14,10 @@ namespace Transprt.Security {
             app.UseCookieAuthentication(new CookieAuthenticationOptions {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
                 LoginPath = new PathString("/Account/Login"),
-                CookieSecure = CookieSecureOption.SameAsRequest
+                CookieSecure = CookieSecureOption.SameAsRequest,
+                ExpireTimeSpan=TimeSpan.FromHours(4),
+                LogoutPath = new PathString("/Account/Logout"),
+                CookieName="Transprt.oAuth"
             });
         }
     }
