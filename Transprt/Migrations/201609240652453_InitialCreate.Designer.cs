@@ -13,7 +13,7 @@ namespace Transprt.Data.Identity
         
         string IMigrationMetadata.Id
         {
-            get { return "201609210229492_InitialCreate"; }
+            get { return "201609240652453_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

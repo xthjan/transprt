@@ -6,8 +6,8 @@ namespace Transprt.Data
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("MenuByRole")]
-    public partial class MenuByRole
+    [Table("MenuByArea")]
+    public partial class MenuByArea
     {
         [Key]
         [Column(Order = 0)]
@@ -16,7 +16,7 @@ namespace Transprt.Data
 
         [Key]
         [Column(Order = 1)]
-        public string id_role { get; set; }
+        public string id_area { get; set; }
 
         public virtual Menu Menu { get; set; }
     }

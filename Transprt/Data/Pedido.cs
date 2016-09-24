@@ -9,7 +9,6 @@ namespace Transprt.Data
     [Table("Pedidos")]
     public partial class Pedido
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int id { get; set; }
 
         public int id_cliente { get; set; }
@@ -22,14 +21,13 @@ namespace Transprt.Data
 
         public int? id_asignacion_ruta { get; set; }
 
-        [Required]
-        [StringLength(10)]
+        [StringLength(128)]
         public string usr_crea { get; set; }
 
         [Column(TypeName = "date")]
         public DateTime fec_crea { get; set; }
 
-        [StringLength(10)]
+        [StringLength(128)]
         public string usr_modif { get; set; }
 
         [Column(TypeName = "date")]
@@ -44,9 +42,5 @@ namespace Transprt.Data
         public virtual Direccione Direccione { get; set; }
 
         public virtual Direccione Direccione1 { get; set; }
-
-        public virtual Usuario Usuario { get; set; }
-
-        public virtual Usuario Usuario1 { get; set; }
     }
 }

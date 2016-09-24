@@ -17,7 +17,6 @@ namespace Transprt.Data
             Rutas1 = new HashSet<Ruta>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int id { get; set; }
 
         [Required]
@@ -47,24 +46,19 @@ namespace Transprt.Data
 
         public bool activo { get; set; }
 
-        [Required]
-        [StringLength(10)]
+        [StringLength(128)]
         public string usr_crea { get; set; }
 
         [Column(TypeName = "date")]
         public DateTime fec_crea { get; set; }
 
-        [StringLength(10)]
+        [StringLength(128)]
         public string usr_modif { get; set; }
 
         [Column(TypeName = "date")]
         public DateTime? fec_modif { get; set; }
 
         public virtual Estado Estado { get; set; }
-
-        public virtual Usuario Usuario { get; set; }
-
-        public virtual Usuario Usuario1 { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Pedido> Pedidos { get; set; }

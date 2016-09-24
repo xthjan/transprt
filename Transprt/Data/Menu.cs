@@ -12,7 +12,7 @@ namespace Transprt.Data
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Menu()
         {
-            MenuByRoles = new HashSet<MenuByRole>();
+            MenuByAreas = new HashSet<MenuByArea>();
         }
 
         public int id { get; set; }
@@ -27,20 +27,19 @@ namespace Transprt.Data
 
         public bool activo { get; set; }
 
-        [Required]
-        [StringLength(10)]
+        [StringLength(128)]
         public string usr_crea { get; set; }
 
         [Column(TypeName = "date")]
         public DateTime fec_crea { get; set; }
 
-        [StringLength(10)]
+        [StringLength(128)]
         public string usr_modif { get; set; }
 
         [Column(TypeName = "date")]
         public DateTime? fec_modif { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MenuByRole> MenuByRoles { get; set; }
+        public virtual ICollection<MenuByArea> MenuByAreas { get; set; }
     }
 }

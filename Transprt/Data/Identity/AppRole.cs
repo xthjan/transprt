@@ -17,10 +17,12 @@ namespace Transprt.Data.Identity {
         public DateTime CreationDate { get; set; }
 
         [Required]
+        [StringLength(128)]
         public string CreationUserName { get; set; }
 
         public DateTime? ModificationDate { get; set; }
 
+        [StringLength(128)]
         public string ModificationUserName { get; set; }
     }
 }

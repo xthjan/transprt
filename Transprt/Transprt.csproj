@@ -180,10 +180,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Data\Area.cs" />
     <Compile Include="Data\AsignacionRuta.cs" />
     <Compile Include="Data\Chofere.cs" />
-    <Compile Include="Data\Claim.cs" />
     <Compile Include="Data\Cliente.cs" />
     <Compile Include="Data\Direccione.cs" />
     <Compile Include="Data\Estado.cs" />
@@ -193,8 +191,8 @@
     <Compile Include="Data\Identity\IdentityDBContext.cs" />
     <Compile Include="Data\Marca.cs" />
     <Compile Include="Data\Menu.cs" />
-    <Compile Include="Data\MenuByRole.cs" />
-    <Compile Include="Data\TransportEntity.cs" />
+    <Compile Include="Data\MenuByArea.cs" />
+    <Compile Include="Data\TransprtEntities.cs" />
     <Compile Include="Data\Modelo.cs" />
     <Compile Include="Data\Pais.cs" />
     <Compile Include="Data\Pedido.cs" />
@@ -203,15 +201,18 @@
     <Compile Include="Data\TipoTransporte.cs" />
     <Compile Include="Data\Transporte.cs" />
     <Compile Include="Data\TransprtConfiguration.cs" />
-    <Compile Include="Data\Usuario.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Managers\Base\BaseManager.cs" />
     <Compile Include="Managers\MenuManager.cs" />
-    <Compile Include="Migrations\201609210229492_InitialCreate.cs" />
-    <Compile Include="Migrations\201609210229492_InitialCreate.Designer.cs">
-      <DependentUpon>201609210229492_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201609240652453_InitialCreate.cs" />
+    <Compile Include="Migrations\201609240652453_InitialCreate.Designer.cs">
+      <DependentUpon>201609240652453_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609240701224_InitialCreate.cs" />
+    <Compile Include="Migrations\201609240701224_InitialCreate.Designer.cs">
+      <DependentUpon>201609240701224_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\Startup.cs" />
@@ -323,8 +324,11 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201609210229492_InitialCreate.resx">
-      <DependentUpon>201609210229492_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201609240652453_InitialCreate.resx">
+      <DependentUpon>201609240652453_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609240701224_InitialCreate.resx">
+      <DependentUpon>201609240701224_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

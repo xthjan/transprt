@@ -49,6 +49,8 @@ namespace Transprt.Data.Identity {
                     LastName = "Castillo",
                     CreationDate = DateTime.Now,
                     CreationUserName = userName,
+                    Password = "qqqqq",
+                    User="aaaaa"
                 };
                 var result = userManager.Create(user, password);
             }

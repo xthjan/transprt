@@ -14,9 +14,9 @@ namespace Transprt.Data.Identity
                         Id = c.String(nullable: false, maxLength: 128),
                         Name = c.String(),
                         CreationDate = c.DateTime(),
-                        CreationUserName = c.String(),
+                        CreationUserName = c.String(maxLength: 128),
                         ModificationDate = c.DateTime(),
-                        ModificationUserName = c.String(),
+                        ModificationUserName = c.String(maxLength: 128),
                         DISC = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id);
@@ -30,12 +30,12 @@ namespace Transprt.Data.Identity
                     })
                 .PrimaryKey(t => new { t.UserId, t.RoleId })
                 .ForeignKey("dbo.Roles", t => t.RoleId, cascadeDelete: true)
-                .ForeignKey("dbo.UsuariosAuth", t => t.UserId, cascadeDelete: true)
+                .ForeignKey("dbo.Usuarios", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId)
                 .Index(t => t.RoleId);
             
             CreateTable(
-                "dbo.UsuariosAuth",
+                "dbo.Usuarios",
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
@@ -53,9 +53,9 @@ namespace Transprt.Data.Identity
                         FirstName = c.String(maxLength: 100),
                         LastName = c.String(maxLength: 100),
                         CreationDate = c.DateTime(),
-                        CreationUserName = c.String(),
+                        CreationUserName = c.String(maxLength: 128),
                         ModificationDate = c.DateTime(),
-                        ModificationUserName = c.String(),
+                        ModificationUserName = c.String(maxLength: 128),
                         DISC = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id);
@@ -70,7 +70,7 @@ namespace Transprt.Data.Identity
                         ClaimValue = c.String(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.UsuariosAuth", t => t.UserId, cascadeDelete: true)
+                .ForeignKey("dbo.Usuarios", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
             
             CreateTable(
@@ -82,16 +82,16 @@ namespace Transprt.Data.Identity
                         LoginProvider = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => new { t.UserId, t.ProviderKey, t.LoginProvider })
-                .ForeignKey("dbo.UsuariosAuth", t => t.UserId, cascadeDelete: true)
+                .ForeignKey("dbo.Usuarios", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.UsuariosRoles", "UserId", "dbo.UsuariosAuth");
-            DropForeignKey("dbo.Logins", "UserId", "dbo.UsuariosAuth");
-            DropForeignKey("dbo.Claims", "UserId", "dbo.UsuariosAuth");
+            DropForeignKey("dbo.UsuariosRoles", "UserId", "dbo.Usuarios");
+            DropForeignKey("dbo.Logins", "UserId", "dbo.Usuarios");
+            DropForeignKey("dbo.Claims", "UserId", "dbo.Usuarios");
             DropForeignKey("dbo.UsuariosRoles", "RoleId", "dbo.Roles");
             DropIndex("dbo.Logins", new[] { "UserId" });
             DropIndex("dbo.Claims", new[] { "UserId" });
@@ -99,7 +99,7 @@ namespace Transprt.Data.Identity
             DropIndex("dbo.UsuariosRoles", new[] { "UserId" });
             DropTable("dbo.Logins");
             DropTable("dbo.Claims");
-            DropTable("dbo.UsuariosAuth");
+            DropTable("dbo.Usuarios");
             DropTable("dbo.UsuariosRoles");
             DropTable("dbo.Roles");
         }

@@ -24,7 +24,7 @@ namespace Transprt.Utils {
         }
 
         public static string GetTableUsers() {
-            return "UsuariosAuth";
+            return "Usuarios";
         }
         public static string GetTableRoles() {
             return "Roles";

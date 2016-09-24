@@ -15,7 +15,6 @@ namespace Transprt.Data
             Estados = new HashSet<Estado>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int id { get; set; }
 
         [Required]
@@ -28,14 +27,13 @@ namespace Transprt.Data
 
         public bool activo { get; set; }
 
-        [Required]
-        [StringLength(10)]
+        [StringLength(128)]
         public string usr_crea { get; set; }
 
         [Column(TypeName = "date")]
         public DateTime fec_crea { get; set; }
 
-        [StringLength(10)]
+        [StringLength(128)]
         public string usr_modif { get; set; }
 
         [Column(TypeName = "date")]
@@ -43,9 +41,5 @@ namespace Transprt.Data
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Estado> Estados { get; set; }
-
-        public virtual Usuario Usuario { get; set; }
-
-        public virtual Usuario Usuario1 { get; set; }
     }
 }
