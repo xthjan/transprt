@@ -1,6 +1,6 @@
 ﻿using System.Configuration;
 
-namespace Transprt.UtilAutUtils {
+namespace Transprt.Utils {
     public class UtilGral {
         public const string ERROR_FROM_CONTROLLER = "modelErrorCustomized";
         public static string GetConfiguration(string setting, string stringDefault) {

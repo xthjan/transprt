@@ -180,6 +180,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MenusController.cs" />
     <Compile Include="Data\AsignacionRuta.cs" />
     <Compile Include="Data\Chofere.cs" />
     <Compile Include="Data\Cliente.cs" />
@@ -206,6 +207,7 @@
     </Compile>
     <Compile Include="Managers\Base\BaseManager.cs" />
     <Compile Include="Managers\MenuManager.cs" />
+    <Compile Include="Managers\UsuarioManager.cs" />
     <Compile Include="Migrations\201609240652453_InitialCreate.cs" />
     <Compile Include="Migrations\201609240652453_InitialCreate.Designer.cs">
       <DependentUpon>201609240652453_InitialCreate.cs</DependentUpon>
@@ -233,6 +235,9 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="images\banner.jpg" />
+    <Content Include="images\deleteIco.png" />
+    <Content Include="images\detailsIco.png" />
+    <Content Include="images\editIco.png" />
     <Content Include="images\favicons\android-chrome-192x192.png" />
     <Content Include="images\favicons\android-chrome-512x512.png" />
     <Content Include="images\favicons\apple-touch-icon.png" />
@@ -305,6 +310,11 @@
     <Content Include="Views\Partials\_ValidationMessage.cshtml" />
     <Content Include="Views\Dashboard\Index.cshtml" />
     <Content Include="Views\Account\Logout.cshtml" />
+    <Content Include="Views\Menus\Create.cshtml" />
+    <Content Include="Views\Menus\Delete.cshtml" />
+    <Content Include="Views\Menus\Details.cshtml" />
+    <Content Include="Views\Menus\Edit.cshtml" />
+    <Content Include="Views\Menus\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

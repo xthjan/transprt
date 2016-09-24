@@ -14,8 +14,7 @@ namespace Transprt.Managers {
 
         public IEnumerable<Menu> GetAllAnonimousMenus() {
             using (TransprtEntities entity = new TransprtEntities()) {
-                var context = new IdentityDBContext();
-                var roleManager = new RoleManager<AppRole>(new RoleStore<AppRole>(context));
+                var roleManager = new RoleManager<AppRole>(new RoleStore<AppRole>(DBContextIdentity));
                 var rolAnonimo = roleManager.FindByName("Anonimo");
                 return entity.MenuByAreas.Where(menu => menu.id_area == rolAnonimo.Id).Select(menuByRol => menuByRol.Menu).ToList();
             }
@@ -30,8 +29,7 @@ namespace Transprt.Managers {
 
         public IEnumerable<Menu> GetUserMenu() {
             using (TransprtEntities entity = new TransprtEntities()) {
-                var context = new IdentityDBContext();
-                var userManager = new UserManager<AppUser>(new UserStore<AppUser>(context));
+                var userManager = new UserManager<AppUser>(new UserStore<AppUser>(DBContextIdentity));
                 var user = userManager.FindById(HttpContext.Current.User.Identity.GetUserId());
                 if(user == null) {
                     return new List<Menu>();

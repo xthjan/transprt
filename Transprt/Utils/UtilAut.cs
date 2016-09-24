@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNet.Identity;
 using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
 namespace Transprt.Utils {
     public class UtilAut {    
@@ -11,6 +8,11 @@ namespace Transprt.Utils {
             return ConfigurationManager.ConnectionStrings["TransprtEntities"].ConnectionString;
 
         }      
+
+        public static string GetUserId() {
+            return HttpContext.Current.User.Identity.GetUserId();
+        }
+            
 
         #region Tables For Models
 

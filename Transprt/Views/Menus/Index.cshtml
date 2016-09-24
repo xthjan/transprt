@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Transprt.Data.Menu>
+
+@{
+    ViewBag.Title = "Menus";
+    Layout = "~/Views/Shared/_LayoutContent.cshtml";
+    ViewBag.Header = "Lista de Menús";
+}
+<p>
+    @Html.ActionLink("Crear nuevo menú", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.url)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.orden)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.activo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.usr_crea)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fec_crea)
+        </th>
+        <th>
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.url)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.orden)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.activo)
+        </td>
+        <td>
+            @item.GetUserCreador()
+        </td>
+        <td>
+            @item.fec_crea.ToShortDateString()
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Ver Detalles", "Details", new { id=item.id }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

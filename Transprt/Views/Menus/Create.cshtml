@@ -1,0 +1,57 @@
+﻿@model Transprt.Data.Menu
+
+@{
+    ViewBag.Title = "Crear nuevo menú";
+    Layout = "~/Views/Shared/_LayoutContent.cshtml";
+    ViewBag.Header = "Crear nuevo menú";
+    var listMessages = new List<MvcHtmlString> { Html.ValidationMessageFor(model => model.name)
+                                                , Html.ValidationMessageFor(model => model.url)};
+}
+
+@using (Html.BeginForm()) {
+    Html.RenderPartial("/Views/Partials/_ValidationMessage.cshtml", listMessages);
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal infoInterna">
+        @Html.HiddenFor(model => model.id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.url, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.url, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.activo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.activo)
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.orden, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.orden, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Crear nuevo menú" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Regresar a la lista de menús", "Index")
+</div>

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Transprt.Utils;
 
 namespace Transprt.Data.Identity {
-    class IdentityDBContext : IdentityDbContext<AppUser> {
+    public class IdentityDBContext : IdentityDbContext<AppUser> {
 
 
         public IdentityDBContext()
