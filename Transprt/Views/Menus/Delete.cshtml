@@ -5,8 +5,10 @@
     Layout = "~/Views/Shared/_LayoutContent.cshtml";
     ViewBag.Header = Model.name;
     ViewBag.SubTitle = "¿Estás seguro de eliminar este menú?";
-}
 
+    var listMessages = new List<MvcHtmlString>();
+    Html.RenderPartial("/Views/Partials/_ValidationMessage.cshtml", listMessages);
+}
 <div class="infoInterna">
     <h4>Menu</h4>
     <hr />
@@ -60,7 +62,7 @@
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
-
+        @Html.HiddenFor(model => model.id)
         <div class="form-actions no-color">
             <input type="submit" value="Eliminar" class="btn btn-default" /> |
             @Html.ActionLink("Regresar a la lista de menús", "Index")

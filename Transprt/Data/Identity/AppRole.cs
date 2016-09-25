@@ -2,27 +2,30 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Transprt.Managers;
 
 namespace Transprt.Data.Identity {
     public class AppRole : IdentityRole {
 
-        public AppRole() {
-            CreationDate = DateTime.Now;
-            //CreationUserName = AuthorizationUtils.GetUserName();
-        }
+        [Display(Name = "Activo")]
+        public bool activo { get; set; }
 
-        [NotMapped]
-        public string Url { get; set; }
         [Required]
+        [Display(Name = "Fecha Creación")]
         public DateTime CreationDate { get; set; }
 
         [Required]
         [StringLength(128)]
+        [Display(Name = "Creado Por")]
         public string CreationUserName { get; set; }
 
         public DateTime? ModificationDate { get; set; }
 
         [StringLength(128)]
         public string ModificationUserName { get; set; }
+        public string GetUserCreador() {
+            UsuarioManager usuarioManager = UsuarioManager.Instance;
+            return usuarioManager.GetNombreCompletoById(CreationUserName);
+        }
     }
 }

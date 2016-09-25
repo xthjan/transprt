@@ -21,7 +21,7 @@ namespace Transprt.Data.Identity {
         }
 
         private void CreateAndAssignAdminRole(UserManager<AppUser> userManager, RoleManager<AppRole> roleManager, AppUser adminUser) {
-            var roleName = "Administrator";
+            var roleName = "Administrador";
             var role = roleManager.FindByName(roleName);
             if (role == null) {
                 var result = roleManager.Create(new AppRole {

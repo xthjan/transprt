@@ -15,7 +15,7 @@ namespace Transprt.Managers {
         public IEnumerable<Menu> GetAllAnonimousMenus() {
             using (TransprtEntities entity = new TransprtEntities()) {
                 var roleManager = new RoleManager<AppRole>(new RoleStore<AppRole>(DBContextIdentity));
-                var rolAnonimo = roleManager.FindByName("Anonimo");
+                var rolAnonimo = roleManager.FindByName("Público");
                 return entity.MenuByAreas.Where(menu => menu.id_area == rolAnonimo.Id).Select(menuByRol => menuByRol.Menu).ToList();
             }
         }

@@ -3768,12 +3768,14 @@ body.is-mobile.landing #footer {
     background-color: #1d242a;
 }
 
-a:hover, a {
+a:hover, a, a:visited {
     text-decoration: none;
 }
-.field-validation-error{
+
+.field-validation-error {
     display: table;
 }
-.inner > table, .infoInterna{
+
+.inner > table, .infoInterna {
     font-size: 12px;
 }

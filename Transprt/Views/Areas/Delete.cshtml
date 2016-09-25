@@ -1,0 +1,55 @@
+﻿@model Transprt.Data.Identity.AppRole
+
+@{
+    ViewBag.Title = "Eliminar Área: " + Model.Name;
+    Layout = "~/Views/Shared/_LayoutContent.cshtml";
+    ViewBag.Header = Model.Name;
+    ViewBag.SubTitle = "¿Estás seguro de eliminar esta área?";
+
+    var listMessages = new List<MvcHtmlString>();
+    Html.RenderPartial("/Views/Partials/_ValidationMessage.cshtml", listMessages);
+}
+<div class="infoInterna">
+    <h4>Área</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Nombre
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.activo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.activo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CreationUserName)
+        </dt>
+
+        <dd>
+            @Model.GetUserCreador()
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CreationDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CreationDate)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.Id)
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Regresar a lista de áreas", "Index")
+        </div>
+    }
+</div>
