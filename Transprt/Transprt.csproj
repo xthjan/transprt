@@ -321,11 +321,11 @@
     <Content Include="Views\Areas\Details.cshtml" />
     <Content Include="Views\Areas\Edit.cshtml" />
     <Content Include="Views\Areas\Index.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\MenuByArea.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\images\" />
-    <Folder Include="Models\" />
     <Folder Include="Scripts\ie\" />
   </ItemGroup>
   <ItemGroup>

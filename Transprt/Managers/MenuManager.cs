@@ -21,10 +21,11 @@ namespace Transprt.Managers {
         }
 
         public IEnumerable<Menu> GetMenuForCurrentUser(bool? isHome) {
+            IEnumerable<Menu> menus = new List<Menu>(); 
             if(isHome.HasValue && isHome.Value) {
-                return GetAllAnonimousMenus();
+                menus = GetAllAnonimousMenus();
             }
-            return GetUserMenu();
+            return menus.Union(GetUserMenu());
         }
 
         public IEnumerable<Menu> GetUserMenu() {

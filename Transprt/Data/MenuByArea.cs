@@ -1,10 +1,6 @@
-namespace Transprt.Data
-{
-    using System;
-    using System.Collections.Generic;
+namespace Transprt.Data {
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
 
     [Table("MenuByArea")]
     public partial class MenuByArea
@@ -19,5 +15,10 @@ namespace Transprt.Data
         public string id_area { get; set; }
 
         public virtual Menu Menu { get; set; }
+
+        [NotMapped]
+        public bool Asignado { get; set; }
+        [NotMapped]
+        public string Nombre { get; set; }
     }
 }

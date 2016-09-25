@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using Transprt.Data;
 using Transprt.Utils;
+using System.Linq;
 
 namespace Transprt.Controllers {
     [Authorize]
@@ -29,22 +30,24 @@ namespace Transprt.Controllers {
         }
         
         public ActionResult Create() {
-            return View();
+            Menu menu = new Menu();
+            Menu.AssignMenuToModel(menu);
+            return View(menu);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(Menu menu) {
-            if (string.IsNullOrEmpty(menu.name)
-                || string.IsNullOrEmpty(menu.url)) {
-                return View(menu);
+        public async Task<ActionResult> Create(Menu menuView) {
+            if (string.IsNullOrEmpty(menuView.name)
+                || string.IsNullOrEmpty(menuView.url)) {
+                return View(menuView);
             }
-            menu.usr_crea = UtilAut.GetUserId();
-            menu.fec_crea = DateTime.Now;
-            db.Menus.Add(menu);
-            await db.SaveChangesAsync();
+            menuView.usr_crea = UtilAut.GetUserId();
+            menuView.fec_crea = DateTime.Now;
+            Menu.RemoveUnassignedArea(menuView);
+            db.Menus.Add(menuView);            
+            await db.SaveChangesAsync();            
             return RedirectToAction("Index");
-            return View(menu);
         }
 
 
@@ -56,18 +59,25 @@ namespace Transprt.Controllers {
             if (menu == null) {
                 return HttpNotFound();
             }
+            Menu.AssignMenuToModel(menu);
             return View(menu);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(Menu menu) {
-            if (string.IsNullOrEmpty(menu.name)
-                || string.IsNullOrEmpty(menu.url)) {
-                return View(menu);
+        public async Task<ActionResult> Edit(Menu menuView) {
+            if (string.IsNullOrEmpty(menuView.name)
+                || string.IsNullOrEmpty(menuView.url)) {
+                return View(menuView);
+            }
+            Menu menu = await db.Menus.FindAsync(menuView.id);
+            if (menu == null) {
+                ModelState.AddModelError(UtilGral.ERROR_FROM_CONTROLLER, "El Menú no existe");
+                return View(menuView);
             }
             menu.usr_modif = UtilAut.GetUserId();
             menu.fec_modif = DateTime.Now;
+            Menu.UpdateMenus(menu, menuView.MenuByAreas);
             db.Entry(menu).State = EntityState.Modified;
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
@@ -88,6 +98,13 @@ namespace Transprt.Controllers {
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id) {
             Menu menu = await db.Menus.FindAsync(id);
+            if (menu == null) {
+                ModelState.AddModelError(UtilGral.ERROR_FROM_CONTROLLER, "El Menú no existe");
+                return View();
+            }
+            menu.MenuByAreas.ToList().ForEach(menuArea => {
+                db.MenuByAreas.Remove(menuArea);
+            });
             db.Menus.Remove(menu);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");

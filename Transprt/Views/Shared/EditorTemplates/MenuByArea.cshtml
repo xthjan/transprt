@@ -1,0 +1,10 @@
+﻿
+@model MenuByArea
+@using Transprt.Data
+
+<fieldset>
+    @Html.HiddenFor(model => model.id_area)
+    @Html.HiddenFor(model => model.id_menu)
+    @Html.CheckBoxFor(model => model.Asignado, htmlAttributes: new { @class = "check-box" })
+    @Html.DisplayFor(model => model.Nombre)
+</fieldset>
