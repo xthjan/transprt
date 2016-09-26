@@ -32,6 +32,10 @@ namespace Transprt.Controllers {
                 ModelState.AddModelError(UtilGral.ERROR_FROM_CONTROLLER, "La contraseña o el usuario no son correctos, favor de intentarlo de nuevo");
                 return View();
             }
+            if (!userLogged.activo) {
+                ModelState.AddModelError(UtilGral.ERROR_FROM_CONTROLLER, "El Usuario no se encuentra habilitado, favor de contactar al administrador");
+                return View();
+            }
             await SignInAsync(userLogged, usuario.RememberMe, userManager);
             return RedirectToAction("Index", "Dashboard");
         }

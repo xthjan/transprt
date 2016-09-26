@@ -9,25 +9,13 @@ using Transprt.Data.Identity;
 using Transprt.Utils;
 
 namespace Transprt.Controllers {
-    [Authorize]
+    [Authorize(Roles = "Administrador")]
     public class AreasController : Controller {
         private IdentityDBContext db = new IdentityDBContext();
         RoleManager<AppRole> RoleManager => new RoleManager<AppRole>(new RoleStore<AppRole>(db));
 
         public async Task<ActionResult> Index() {
             return View(await RoleManager.Roles.ToListAsync());
-        }
-
-
-        public async Task<ActionResult> Details(string id) {
-            if (id == null) {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            AppRole appRole = await RoleManager.FindByIdAsync(id);
-            if (appRole == null) {
-                return HttpNotFound();
-            }
-            return View(appRole);
         }
 
         public ActionResult Create() {
@@ -84,9 +72,9 @@ namespace Transprt.Controllers {
                 ModelState.AddModelError(UtilGral.ERROR_FROM_CONTROLLER, "El Área no existe");
                 return View(appRole);
             }
-            if (role.Name== "Público") {
-                ModelState.AddModelError(UtilGral.ERROR_FROM_CONTROLLER, "El Área Público no puede editarse");
-                return View(appRole);
+            if (role.Id == Guid.Empty.ToString()) {
+                ModelState.AddModelError(UtilGral.ERROR_FROM_CONTROLLER, "NOTA: El área pública no se puede deshabilitar");
+                appRole.activo = true;
             }
             role.activo = appRole.activo;
             role.Name = appRole.Name;
@@ -117,8 +105,8 @@ namespace Transprt.Controllers {
                 ModelState.AddModelError(UtilGral.ERROR_FROM_CONTROLLER, "El Área no existe");
                 return View(new AppRole());
             }
-            if (role.Name == "Público") {
-                ModelState.AddModelError(UtilGral.ERROR_FROM_CONTROLLER, "El Área Público no puede eliminarse");
+            if (role.Id == Guid.Empty.ToString()) {
+                ModelState.AddModelError(UtilGral.ERROR_FROM_CONTROLLER, "El Área pública no puede eliminarse");
                 return View(role);
             }
             await RoleManager.DeleteAsync(role);

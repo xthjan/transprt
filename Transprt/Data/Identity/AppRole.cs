@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Transprt.Managers;
@@ -17,6 +19,7 @@ namespace Transprt.Data.Identity {
         [Required]
         [StringLength(128)]
         [Display(Name = "Creado Por")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public string CreationUserName { get; set; }
 
         public DateTime? ModificationDate { get; set; }
@@ -27,5 +30,8 @@ namespace Transprt.Data.Identity {
             UsuarioManager usuarioManager = UsuarioManager.Instance;
             return usuarioManager.GetNombreCompletoById(CreationUserName);
         }
+        [NotMapped]
+        public bool Asignado { get; set; }
+       
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -14,15 +15,15 @@ namespace Transprt.Managers {
 
         public IEnumerable<Menu> GetAllAnonimousMenus() {
             using (TransprtEntities entity = new TransprtEntities()) {
-                var roleManager = new RoleManager<AppRole>(new RoleStore<AppRole>(DBContextIdentity));
-                var rolAnonimo = roleManager.FindByName("Público");
-                return entity.MenuByAreas.Where(menu => menu.id_area == rolAnonimo.Id).Select(menuByRol => menuByRol.Menu).ToList();
+                return entity.MenuByAreas
+                             .Where(menu => menu.id_area == Guid.Empty.ToString() && menu.Menu.activo)
+                             .Select(menuByRol => menuByRol.Menu).ToList();
             }
         }
 
         public IEnumerable<Menu> GetMenuForCurrentUser(bool? isHome) {
-            IEnumerable<Menu> menus = new List<Menu>(); 
-            if(isHome.HasValue && isHome.Value) {
+            IEnumerable<Menu> menus = new List<Menu>();
+            if (isHome.HasValue && isHome.Value) {
                 menus = GetAllAnonimousMenus();
             }
             return menus.Union(GetUserMenu());
@@ -32,11 +33,11 @@ namespace Transprt.Managers {
             using (TransprtEntities entity = new TransprtEntities()) {
                 var userManager = new UserManager<AppUser>(new UserStore<AppUser>(DBContextIdentity));
                 var user = userManager.FindById(HttpContext.Current.User.Identity.GetUserId());
-                if(user == null) {
+                if (user == null) {
                     return new List<Menu>();
                 }
                 var roles = user.Roles.Select(rol => rol.RoleId);
-                return entity.MenuByAreas.Where(menu => roles.Contains(menu.id_area))
+                return entity.MenuByAreas.Where(menu => roles.Contains(menu.id_area) && menu.Menu.activo)
                             .Select(menuByRol => menuByRol.Menu).Distinct().ToList();
             }
         }

@@ -182,6 +182,7 @@
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MenusController.cs" />
+    <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Data\AsignacionRuta.cs" />
     <Compile Include="Data\Chofere.cs" />
     <Compile Include="Data\Cliente.cs" />
@@ -313,15 +314,18 @@
     <Content Include="Views\Account\Logout.cshtml" />
     <Content Include="Views\Menus\Create.cshtml" />
     <Content Include="Views\Menus\Delete.cshtml" />
-    <Content Include="Views\Menus\Details.cshtml" />
     <Content Include="Views\Menus\Edit.cshtml" />
     <Content Include="Views\Menus\Index.cshtml" />
     <Content Include="Views\Areas\Create.cshtml" />
     <Content Include="Views\Areas\Delete.cshtml" />
-    <Content Include="Views\Areas\Details.cshtml" />
     <Content Include="Views\Areas\Edit.cshtml" />
     <Content Include="Views\Areas\Index.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\MenuByArea.cshtml" />
+    <Content Include="Views\Usuarios\Create.cshtml" />
+    <Content Include="Views\Usuarios\Delete.cshtml" />
+    <Content Include="Views\Usuarios\Edit.cshtml" />
+    <Content Include="Views\Usuarios\Index.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\AppRole.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

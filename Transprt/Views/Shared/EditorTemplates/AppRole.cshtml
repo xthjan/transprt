@@ -1,0 +1,9 @@
+﻿@model AppRole
+@using Transprt.Data.Identity
+
+<fieldset>
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.Name)
+    @Html.CheckBoxFor(model => model.Asignado, htmlAttributes: new { @class = "check-box" })
+    @Html.DisplayFor(model => model.Name)
+</fieldset>

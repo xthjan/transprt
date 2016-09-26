@@ -8,25 +8,13 @@ using Transprt.Utils;
 using System.Linq;
 
 namespace Transprt.Controllers {
-    [Authorize]
+    [Authorize(Roles = "Administrador")]
     public class MenusController : Controller {
         private TransprtEntities db = new TransprtEntities();
 
 
         public async Task<ActionResult> Index() {
             return View(await db.Menus.ToListAsync());
-        }
-
-
-        public async Task<ActionResult> Details(int? id) {
-            if (id == null) {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Menu menu = await db.Menus.FindAsync(id);
-            if (menu == null) {
-                return HttpNotFound();
-            }
-            return View(menu);
         }
         
         public ActionResult Create() {
