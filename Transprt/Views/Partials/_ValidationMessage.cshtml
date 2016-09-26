@@ -5,7 +5,7 @@
                   where item.Value.Errors.Any() && item.Key == UtilGral.ERROR_FROM_CONTROLLER
                   select item.Value);
 }
-@if (!ViewData.ModelState.IsValid) {
+@if (errors.Count() > 0 || Model.Count() > 0) {
     <div class="alert alert-danger" role="alert">
         <strong>@ViewBag.MessageValidator</strong>
         @foreach (MvcHtmlString message in Model) {
@@ -14,7 +14,7 @@
 
         @foreach (ModelState state in errors) {
             foreach (ModelError error in state.Errors) {
-                    <div>@error.ErrorMessage</div>
+                <div>@error.ErrorMessage</div>
             }
         }
 

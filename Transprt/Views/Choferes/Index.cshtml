@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Transprt.Data.Chofere>
+
+
+@{
+    ViewBag.Title = "Choferes";
+    Layout = "~/Views/Shared/_LayoutContent.cshtml";
+    ViewBag.Header = "Lista de choferes";
+}
+<p>
+    @Html.ActionLink("Crear nuevo Chofer", "Create")
+</p>
+<div class="table-responsive">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Persona.nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.edad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sexo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nss)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.num_lic_conducir)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.activo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.usr_crea)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fec_crea)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @item.Persona.GetNombreCompleto()
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.edad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.sexo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nss)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.num_lic_conducir)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.activo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.usr_crea)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fec_crea)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.id }) |
+                    @Html.ActionLink("Eliminar Chofer", "Delete", new { id = item.id })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

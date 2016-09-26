@@ -5,6 +5,7 @@ namespace Transprt.Data
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Linq;
 
     public partial class Persona
     {
@@ -40,6 +41,7 @@ namespace Transprt.Data
 
         [StringLength(128)]
         [Display(Name = "Creado Por")]
+        [UIHint("UserName")]
         public string usr_crea { get; set; }
 
         [Column(TypeName = "date")]
@@ -58,5 +60,10 @@ namespace Transprt.Data
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cliente> Clientes { get; set; }
+
+        public string GetNombreCompleto() {
+            List<string> nombreCompleto = new List<string>() { nombre, a_paterno, a_materno };
+            return string.Join(" ", nombreCompleto.Where(nom => !string.IsNullOrWhiteSpace(nom)));
+        }
     }
 }

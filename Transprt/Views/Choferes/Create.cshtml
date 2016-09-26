@@ -1,0 +1,74 @@
+﻿@using Transprt.Utils
+    @model Transprt.Data.Chofere
+    @{
+        ViewBag.Title = "Crear nuevo chofer";
+        Layout = "~/Views/Shared/_LayoutContent.cshtml";
+        ViewBag.Header = "Crear nuevo chofer";
+        var listMessages = new List<MvcHtmlString> ();        
+    }
+
+    @using (Html.BeginForm()) {
+        Html.RenderPartial("/Views/Partials/_ValidationMessage.cshtml", listMessages);
+
+        @Html.AntiForgeryToken()
+        @Html.EditorFor(model => model.Persona)
+
+        @Html.HiddenFor(model => model.fec_crea)
+        @Html.HiddenFor(model => model.usr_crea)
+
+        <div class="form-horizontal infoInterna">
+            <h4>Datos Chofer</h4>
+            <hr />
+            <div class="form-group">
+                @Html.LabelFor(model => model.edad, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.edad, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.edad, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.sexo, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.sexo, new { htmlAttributes = new { @class = "form-control" } })
+
+                    @Html.ValidationMessageFor(model => model.sexo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.nss, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.nss, new { htmlAttributes = new { @class = "form-control" } })
+
+                    @Html.ValidationMessageFor(model => model.nss, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.num_lic_conducir, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.num_lic_conducir, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.num_lic_conducir, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.activo, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.activo)
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Crear Chofer" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Regresar a lista de choferes", "Index")
+    </div>

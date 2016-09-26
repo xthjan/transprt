@@ -180,6 +180,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AreasController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\Dashboard\ChoferesController.cs" />
     <Compile Include="Controllers\Dashboard\PaisController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MenusController.cs" />
@@ -338,6 +339,11 @@
     <Content Include="Views\Pais\EstadoLista.cshtml" />
     <Content Include="Views\Shared\_ErrorParcial.cshtml" />
     <Content Include="Views\Pais\EstadoDetail.cshtml" />
+    <Content Include="Views\Choferes\Create.cshtml" />
+    <Content Include="Views\Choferes\Delete.cshtml" />
+    <Content Include="Views\Choferes\Edit.cshtml" />
+    <Content Include="Views\Choferes\Index.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Persona.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
