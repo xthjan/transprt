@@ -14,12 +14,12 @@ namespace Transprt.Data.Identity {
 
         [Required]
         [Display(Name = "Fecha Creación")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime CreationDate { get; set; }
 
         [Required]
         [StringLength(128)]
         [Display(Name = "Creado Por")]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public string CreationUserName { get; set; }
 
         public DateTime? ModificationDate { get; set; }

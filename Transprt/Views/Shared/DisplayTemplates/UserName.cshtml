@@ -1,0 +1,6 @@
+﻿@using Transprt.Managers
+@model string
+ @{ 
+     var userManager = UsuarioManager.Instance;
+ }
+@userManager.GetNombreCompletoById(Model)

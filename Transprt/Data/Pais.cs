@@ -19,18 +19,24 @@ namespace Transprt.Data
 
         [Required]
         [StringLength(50)]
+        [Display(Name = "Nombre")]
         public string nombre { get; set; }
 
         [Required]
         [StringLength(3)]
+        [Display(Name = "Código ISO")]
         public string cod_iso { get; set; }
-
+        [Display(Name = "Activo")]
         public bool activo { get; set; }
 
         [StringLength(128)]
+        [Display(Name = "Creado Por")]
+        [UIHint("UserName")]
         public string usr_crea { get; set; }
 
         [Column(TypeName = "date")]
+        [Display(Name = "Fecha Creación")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime fec_crea { get; set; }
 
         [StringLength(128)]

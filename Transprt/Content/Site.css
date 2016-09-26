@@ -3783,3 +3783,19 @@ a:hover, a, a:visited {
 
      margin-left: 0px; 
 }
+
+.dashboard .features li:before {
+    color: #337ab7;
+    cursor:pointer;
+}
+.dashboard .features li {
+    cursor:pointer;
+}
+
+.dashboard .features li:hover {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {  
+  50% { opacity:.5 }
+}

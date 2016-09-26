@@ -1,0 +1,64 @@
+﻿@using Transprt.Data
+@using System.Linq
+@model Pais
+
+@{
+    ViewBag.Title = "Editar " + Model.nombre;
+    Layout = "~/Views/Shared/_LayoutContent.cshtml";
+    ViewBag.Header = "Editar " + Model.nombre;
+    var listMessages = new List<MvcHtmlString> { Html.ValidationMessageFor(model => model.nombre)
+                                                ,Html.ValidationMessageFor(model => model.cod_iso)};
+}
+
+@using (Html.BeginForm()) {
+    Html.RenderPartial("/Views/Partials/_ValidationMessage.cshtml", listMessages);
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal infoInterna">
+        @Html.HiddenFor(model => model.id)
+        @Html.HiddenFor(model => model.usr_crea)
+        @Html.HiddenFor(model => model.fec_crea)
+        <div class="form-group">
+            @Html.LabelFor(model => model.nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.cod_iso, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.cod_iso, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.activo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.activo)
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Guardar País" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+<div class="form-horizontal infoInterna">
+    <div class="form-group">
+        @Html.Label("Estados", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.Partial("EstadoEditor", new Estado() { id_pais = Model.id })
+            <div id="listaEstados">
+                @Html.Partial("EstadoLista", Model.Estados)
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div>
+    @Html.ActionLink("Regresar a lista de paises", "Index")
+</div>

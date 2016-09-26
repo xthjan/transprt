@@ -1,0 +1,49 @@
+﻿@model Transprt.Data.Pais
+
+@{
+    ViewBag.Title = "Eliminar País: " + Model.nombre;
+    Layout = "~/Views/Shared/_LayoutContent.cshtml";
+    ViewBag.Header = Model.nombre;
+    ViewBag.SubTitle = "¿Estás seguro de eliminar este país?";
+
+    var listMessages = new List<MvcHtmlString>();
+    Html.RenderPartial("/Views/Partials/_ValidationMessage.cshtml", listMessages);
+}
+<div class="infoInterna">
+    <h4>Pais</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cod_iso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cod_iso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.activo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.activo)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+           @Html.ActionLink("Regresar a lista de paises", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,43 @@
+﻿@using Transprt.Data
+@model ICollection<Estado>
+@if (Model.Count > 0) {
+    <div class="col-md-10">
+        <div class="table-responsive">
+            <table class="table">
+                <tr>
+                    <th>
+                        Nombre estado
+                    </th>
+                    <th></th>
+                </tr>
+                @foreach (Estado estado in Model) {
+                    <tr>
+                        <td>
+                            <span id="detail_@estado.id.ToString()">
+                                @estado.nombre
+                            </span>
+                            <span id="update_@estado.id.ToString()" style="display:none">
+                                @Html.Partial("EstadoDetail", estado)
+                            </span>
+                        </td>
+                        <td><a onclick="toogleDetail($('#update_@estado.id.ToString()'),$('#detail_@estado.id.ToString()'), $(this))">Editar</a> |
+                        @Ajax.ActionLink("Eliminar", "EliminarEstado", new { id = estado.id }, new AjaxOptions { UpdateTargetId = "listaEstados", InsertionMode = InsertionMode.Replace, OnSuccess = "ClearText" })</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+}
+<script>
+    function toogleDetail(update, detail,a) {
+        if(update.is(":visible")){
+            detail.show();
+            update.hide();
+            a.text("Editar");
+            return;
+        }
+        detail.hide();
+        update.show();
+        a.text("Cancelar");
+    }
+</script>

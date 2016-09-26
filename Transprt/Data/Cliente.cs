@@ -19,20 +19,25 @@ namespace Transprt.Data
 
         [Required]
         [StringLength(150)]
+        [Display(Name = "Razón Social")]
         public string nom_razon { get; set; }
-
+        [Display(Name = "Persona Contacto")]
         public int id_persona_contacto { get; set; }
 
         [Required]
         [StringLength(15)]
+        [Display(Name = "RFC")]
         public string rfc { get; set; }
-
+        [Display(Name = "Activo")]
         public bool activo { get; set; }
 
         [StringLength(128)]
+        [Display(Name = "Creado Por")]
         public string usr_crea { get; set; }
 
         [Column(TypeName = "date")]
+        [Display(Name = "Fecha Creación")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime fec_crea { get; set; }
 
         [StringLength(128)]
