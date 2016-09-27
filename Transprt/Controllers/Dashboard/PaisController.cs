@@ -6,6 +6,9 @@ using System.Web.Mvc;
 using Transprt.Data;
 using Transprt.Utils;
 using System.Linq;
+using System.Collections.Generic;
+using Transprt.Managers;
+
 namespace Transprt.Controllers.Dashboard {
     [Authorize]
     public class PaisController : Controller {
@@ -58,8 +61,8 @@ namespace Transprt.Controllers.Dashboard {
             }
             return View(pais);
         }
-        
-        
+
+
         public async Task<PartialViewResult> AddState(Estado estado) {
             if (Request.IsAjaxRequest()) {
                 Pais pais = await db.Paises.FindAsync(estado.id_pais);
@@ -121,6 +124,10 @@ namespace Transprt.Controllers.Dashboard {
             db.Paises.Remove(pais);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
+        }
+        public ActionResult GetEstados(int id) {
+            var estados = PaisesManager.Instance.GetAllEstadosPorPais(id);
+            return Json(estados, JsonRequestBehavior.AllowGet);
         }
 
         protected override void Dispose(bool disposing) {

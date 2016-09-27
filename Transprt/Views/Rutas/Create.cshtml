@@ -1,0 +1,107 @@
+﻿@model Transprt.Data.Ruta
+
+@{
+    ViewBag.Title = (Model.id == 0) ? "Crear nueva Ruta" : "Editar Ruta: " + Model.nombre;
+    Layout = "~/Views/Shared/_LayoutContent.cshtml";
+    ViewBag.Header = ViewBag.Title;
+    var listMessages = new List<MvcHtmlString>();
+}
+
+@using (Html.BeginForm()) {
+    Html.RenderPartial("/Views/Partials/_ValidationMessage.cshtml", listMessages);
+
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(model => model.fec_crea)
+    @Html.HiddenFor(model => model.usr_crea)
+    @Html.HiddenFor(model => model.id_direccion_inicio)
+    @Html.HiddenFor(model => model.id_dirección_final)
+    <div class="form-horizontal infoInterna">
+        <h4>Ruta</h4>
+        <hr />
+        <div class="form-group">
+            <div class="form-group">
+                @Html.LabelFor(model => model.nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.activo, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.activo)
+                        @Html.ValidationMessageFor(model => model.activo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-horizontal infoInterna">
+            <h4>Dirección Inicial</h4>
+            <hr />
+            @Html.EditorFor(model => model.Direccione)
+        </div>
+        <div class="form-horizontal infoInterna">
+            <h4>Dirección Final</h4>
+            <hr />
+            @Html.EditorFor(model => model.Direccione1)
+        </div>
+        <div class="form-horizontal infoInterna">
+            <h4>Costos</h4>
+            <hr />
+            <div class="form-group">
+                @Html.LabelFor(model => model.km_total, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="input-group">
+                        @Html.EditorFor(model => model.km_total, new { htmlAttributes = new { @class = "form-control" } })
+                        <span class="input-group-addon" id="contdescript">kms</span>
+                    </div>
+                    @Html.ValidationMessageFor(model => model.km_total, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.gasto_gasolina, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="contdescript">$</span>
+                        @Html.EditorFor(model => model.gasto_gasolina, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.gasto_gasolina, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.gasto_peajes, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="contdescript">$</span>
+                        @Html.EditorFor(model => model.gasto_peajes, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.gasto_peajes, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.otros_gastos, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="contdescript">$</span>
+                        @Html.EditorFor(model => model.otros_gastos, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.otros_gastos, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value=@(Model.id==0?"Crear Ruta\"":"Editar Ruta\"") class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Regresar a lista de rutas", "Index")
+</div>

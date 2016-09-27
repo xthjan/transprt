@@ -21,32 +21,41 @@ namespace Transprt.Data
 
         [Required]
         [StringLength(50)]
+        [Display(Name = "Calle")]
         public string calle { get; set; }
 
         [Required]
         [StringLength(50)]
+        [Display(Name = "Número exterior")]
         public string num_ext { get; set; }
 
         [StringLength(50)]
+        [Display(Name = "Número interior")]
         public string num_int { get; set; }
 
         [Required]
         [StringLength(50)]
+        [Display(Name = "Colonia")]
         public string col { get; set; }
 
+        [Display(Name = "Estado")]
         public int id_estado { get; set; }
 
         [Required]
         [StringLength(10)]
+        [Display(Name = "CP")]
         public string cp { get; set; }
 
         [Required]
         [StringLength(50)]
+        [Display(Name = "Teléfono")]
         public string tel_fijo { get; set; }
 
         public bool activo { get; set; }
 
         [StringLength(128)]
+        [Display(Name = "Creado Por")]
+        [UIHint("UserName")]
         public string usr_crea { get; set; }
 
         [Column(TypeName = "date")]
@@ -57,7 +66,7 @@ namespace Transprt.Data
 
         [Column(TypeName = "date")]
         public DateTime? fec_modif { get; set; }
-
+        
         public virtual Estado Estado { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

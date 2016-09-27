@@ -1,0 +1,31 @@
+﻿@using Transprt.Data
+@using Transprt.Managers
+@model int
+@{
+
+    var prefix = string.Empty;
+    if (ViewData.TemplateInfo != null) {
+        prefix = ViewData.TemplateInfo.HtmlFieldPrefix.Replace(".", "_") + "";
+    }
+    var paisesManager = PaisesManager.Instance;
+    var eventoChange = @"LoadCascade('/Pais/GetEstados', {'id': $(this).val()}, $('#" + prefix + "'));";
+    var estados = Enumerable.Empty<SelectListItem>();
+    var paises = new SelectList(paisesManager.GetAllPaises(), "Value", "Text", paisesManager.GetIdPaisDeEstado(Model));
+    if (Model != 0) {
+        estados = paisesManager.GetAllEstadosPorEstadoSeleccionado(Model);
+    }
+}
+
+<div class="form-group">
+    @Html.Label("Pais", htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.DropDownList("pais", paises, htmlAttributes: new { @class = "form-control", @onchange = eventoChange })
+    </div>
+</div>
+<div class="form-group">
+    @Html.LabelFor(model => model, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.DropDownListFor(model => model, new SelectList(estados, "Value", "Text", Model), htmlAttributes: new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model, "", new { @class = "text-danger" })
+    </div>
+</div>

@@ -14,7 +14,7 @@ namespace Transprt.Data
         {
             Direcciones = new HashSet<Direccione>();
         }
-
+        [Display(Name = "Estado")]
         public int id { get; set; }
 
         [Required]

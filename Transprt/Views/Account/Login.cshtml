@@ -6,8 +6,7 @@
     ViewBag.Header = "Login";
     ViewBag.SubTitle = "Ingresa a Transprt con tus datos de usuario";
     ViewBag.IsValidable = true;
-    var listMessages = new List<MvcHtmlString> { Html.ValidationMessageFor(model => model.User)
-                                                , Html.ValidationMessageFor(model => model.Password)};
+    var listMessages = new List<MvcHtmlString>();
     ViewBag.MessageValidator = "Ha ocurrido un error en su acceso.";
     ViewBag.HideMenu = true;
 }
@@ -19,6 +18,7 @@
                 <span class="input-group-addon" id="descriptor">usuario</span>
                 @Html.TextBoxFor(model => model.User, new { @type = "text", @class = "form-control", aria_describedby = "descriptor" })
             </div>
+            @Html.ValidationMessageFor(model => model.User)
         </div>
     </div>
         <div class="form-group">
@@ -27,6 +27,7 @@
                     <span class="input-group-addon" id="contdescript">contraseña</span>
                     @Html.TextBoxFor(model => model.Password, new { @type = "password", @class = "form-control", aria_describedby = "contdescript" })
                 </div>
+                @Html.ValidationMessageFor(model => model.Password)
             </div>
         </div>
         <div class="form-group">

@@ -8,6 +8,7 @@ namespace Transprt {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-3.1.0.min.js", "~/Scripts/jquery.scrollex.min.js", "~/Scripts/jquery.scrolly.min.js"
                         , "~/Scripts/skel.min.js", "~/Scripts/util.js", "~/Scripts/main.js", "~/Scripts/jquery.unobtrusive-ajax.min.js"
+                        , "~/Scripts/site.js"
                         ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
