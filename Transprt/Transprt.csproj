@@ -183,6 +183,7 @@
     <Compile Include="Controllers\Dashboard\ChoferesController.cs" />
     <Compile Include="Controllers\Dashboard\PaisController.cs" />
     <Compile Include="Controllers\Dashboard\RutasController.cs" />
+    <Compile Include="Controllers\Dashboard\Transportes\MarcasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MenusController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
@@ -352,6 +353,10 @@
     <Content Include="Views\Rutas\Index.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Direccione.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Estado.cshtml" />
+    <Content Include="Views\Dashboard\Transportes.cshtml" />
+    <Content Include="Views\Marcas\Create.cshtml" />
+    <Content Include="Views\Marcas\Delete.cshtml" />
+    <Content Include="Views\Marcas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
