@@ -1,0 +1,81 @@
+﻿@model Transprt.Data.Transporte
+
+@{
+    ViewBag.Title = "Eliminar transporte: " + Model.nombre;
+    Layout = "~/Views/Shared/_LayoutContent.cshtml";
+    ViewBag.Header = Model.nombre;
+    ViewBag.SubTitle = "¿Estás seguro de eliminar este transporte?";
+
+    var listMessages = new List<MvcHtmlString>();
+    Html.RenderPartial("/Views/Partials/_ValidationMessage.cshtml", listMessages);
+}
+<div class="infoInterna">
+    <h4>Transporte</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoTransporte.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoTransporte.descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fec_adquisicion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fec_adquisicion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.valor_factura)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.valor_factura)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.matricula)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.matricula)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fec_ultima_inspeccion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fec_ultima_inspeccion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fec_ultimo_servicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fec_ultimo_servicio)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="@ViewBag.Title" class="btn btn-default" /> |
+            @Html.ActionLink("Regresar a Lista de transportes", "Index")
+        </div>
+    }
+</div>

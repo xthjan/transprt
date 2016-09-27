@@ -71,7 +71,7 @@ namespace Transprt.Controllers.Dashboard.Transportes {
         private void GetMarcas(TipoTransporte tipTransp) {
             SelectList modelos = new SelectList(db.Modelos.Where(modelo => modelo.activo), "id", "nombre");
             if (tipTransp != null) {
-                modelos = new SelectList(db.Marcas.Where(modelo => modelo.activo), "id", "nombre", tipTransp.id_modelo);
+                modelos = new SelectList(db.Modelos.Where(modelo => modelo.activo), "id", "nombre", tipTransp.id_modelo);
             }
             ViewBag.id_modelo = modelos;
         }

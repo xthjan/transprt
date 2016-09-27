@@ -1,5 +1,4 @@
-namespace Transprt.Data
-{
+namespace Transprt.Data {
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -7,8 +6,7 @@ namespace Transprt.Data
     using System.Data.Entity.Spatial;
 
     [Table("Pedidos")]
-    public partial class Pedido
-    {
+    public partial class Pedido {
         public int id { get; set; }
 
         public int id_cliente { get; set; }
@@ -20,6 +18,9 @@ namespace Transprt.Data
         public int id_cliente_entrega { get; set; }
 
         public int? id_asignacion_ruta { get; set; }
+
+        public decimal precio { get; set; }
+        public decimal impuestos { get; set; }       
 
         [StringLength(128)]
         public string usr_crea { get; set; }
