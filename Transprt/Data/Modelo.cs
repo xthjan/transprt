@@ -19,18 +19,27 @@ namespace Transprt.Data
 
         [Required]
         [StringLength(50)]
+        [Display(Name = "Nombre")]
         public string nombre { get; set; }
 
+        [Display(Name = "Año Fabricación")]
         public int anho_fabricacion { get; set; }
 
         public int id_marca { get; set; }
 
+        [Display(Name = "Activo")]
         public bool activo { get; set; }
 
         [StringLength(128)]
+        [Display(Name = "Creado Por")]
+        [UIHint("UserName")]
+        [Editable(false)]
         public string usr_crea { get; set; }
 
         [Column(TypeName = "date")]
+        [Display(Name = "Fecha Creación")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        [Editable(false)]
         public DateTime fec_crea { get; set; }
 
         [StringLength(128)]
