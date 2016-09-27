@@ -185,6 +185,7 @@
     <Compile Include="Controllers\Dashboard\RutasController.cs" />
     <Compile Include="Controllers\Dashboard\Transportes\MarcasController.cs" />
     <Compile Include="Controllers\Dashboard\Transportes\ModelosController.cs" />
+    <Compile Include="Controllers\Dashboard\Transportes\TipoTransportesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MenusController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
@@ -361,6 +362,9 @@
     <Content Include="Views\Modelos\Create.cshtml" />
     <Content Include="Views\Modelos\Delete.cshtml" />
     <Content Include="Views\Modelos\Index.cshtml" />
+    <Content Include="Views\TipoTransportes\Create.cshtml" />
+    <Content Include="Views\TipoTransportes\Delete.cshtml" />
+    <Content Include="Views\TipoTransportes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

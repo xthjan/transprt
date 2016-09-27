@@ -1,5 +1,4 @@
-namespace Transprt.Data
-{
+namespace Transprt.Data {
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -7,11 +6,9 @@ namespace Transprt.Data
     using System.Data.Entity.Spatial;
 
     [Table("Modelos")]
-    public partial class Modelo
-    {
+    public partial class Modelo {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Modelo()
-        {
+        public Modelo() {
             TipoTransportes = new HashSet<TipoTransporte>();
         }
 
@@ -25,8 +22,8 @@ namespace Transprt.Data
         [Display(Name = "Año Fabricación")]
         public int anho_fabricacion { get; set; }
 
+        [Display(Name = "Marca")]
         public int id_marca { get; set; }
-
         [Display(Name = "Activo")]
         public bool activo { get; set; }
 

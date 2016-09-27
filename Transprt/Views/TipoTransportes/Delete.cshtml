@@ -1,0 +1,36 @@
+﻿@model Transprt.Data.TipoTransporte
+
+
+@{
+    ViewBag.Title = "Eliminar tipo transporte: " + Model.descripcion;
+    Layout = "~/Views/Shared/_LayoutContent.cshtml";
+    ViewBag.Header = Model.descripcion;
+    ViewBag.SubTitle = "¿Estás seguro de eliminar este tipo de transporte?";
+
+    var listMessages = new List<MvcHtmlString>();
+    Html.RenderPartial("/Views/Partials/_ValidationMessage.cshtml", listMessages);
+}
+<div class="infoInterna">
+    <h4>TipoTransporte</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descripcion)
+        </dd>
+
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Regresar a lista de tipos de transporte", "Index")
+        </div>
+    }
+</div>
